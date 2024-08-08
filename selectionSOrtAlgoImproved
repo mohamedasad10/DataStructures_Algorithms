@@ -1,8 +1,10 @@
 /* Selection Sort Algorithm Improved!
  * ATTENTION : CODE TAKEN FROM: https://www.w3schools.com/dsa/dsa_algo_selectionsort.php
  * 
- * 
- * 
+ * For this code:
+ * Instead of all the shifting, swap the lowest value (5) with the first value (64).
+ * We can swap values because the lowest value ends up in the correct position(at the beginning), 
+ * and it does not matter where we put the other value we are swapping with, because it is not sorted yet. 
  */
 
 public class main{
