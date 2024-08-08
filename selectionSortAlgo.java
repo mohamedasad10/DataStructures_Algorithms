@@ -4,11 +4,25 @@
  * Notes:
  * For this Algorithm we using the indexes to compare and move the numbers in the array
  * 
- * How its done:
- * First we looking for the smallest value in the in the array in iteration 1(this happens in the first inner for loop)
- * Then we moving all the number from the start to that smallest value to the right(this happens in the second for loop)
- * Then we take that smallest value and put it to the start
- * Then we continue with iteration 2 and so on
+ * How it’s Done:
+    Find the Smallest Value:
+
+    Start from the first unsorted position in the array.
+    Look through the rest of the array to find the smallest value.
+    This happens in the first inner loop.
+    Shift Elements to the Right:
+
+    Once you find the smallest value, move all the elements from the start to the position of the smallest value one place to the right.
+    This makes room to place the smallest value at the start.
+    This happens in the second inner loop.
+    Place the Smallest Value at the Start:
+
+    After shifting, place the smallest value at the beginning of the unsorted portion of the array.
+    Now, the smallest value is in its correct sorted position.
+    Continue with the Next Iteration:
+
+    Move to the next position in the array, and repeat the process with the remaining unsorted portion.
+    Keep doing this until the entire array is sorted.
  */
 
 
