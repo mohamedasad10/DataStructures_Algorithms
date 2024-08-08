@@ -6,7 +6,7 @@
  * 
  * How its done:
  * First we looking for the smallest value in the in the array in iteration 1(this happens in the first inner for loop)
- * Then we moving all the number from the start to that smallest value to the right
+ * Then we moving all the number from the start to that smallest value to the right(this happens in the second for loop)
  * Then we take that smallest value and put it to the start
  * Then we continue with iteration 2 and so on
  */
