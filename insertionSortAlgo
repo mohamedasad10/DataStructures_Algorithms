@@ -7,6 +7,10 @@
  * It shifts larger elements in the sorted subarray to the right to make space for the current element.
  * The current element is then inserted into its correct position within the sorted subarray.
  * This process is repeated for each element until the entire array is sorted.
+ 
+   My Notes:
+ * We going to compare the the number at index 1 with the number at index 0. If the number at index 0 is greater than number at index 1,
+ * we push the index number at 0 to the right. We then replace the index number at 1 to be at index number 0. 
  */
 
 public class main { // Defines the main class
