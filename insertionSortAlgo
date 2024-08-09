@@ -1,0 +1,61 @@
+/* Insertion Sort Algorithm 
+ * ATTENTION : CODE TAKEN FROM: https://www.w3schools.com/dsa/dsa_algo_insertionsort.php
+ * 
+ * Summary:
+ * The algorithm starts with the second element in the array, treating the first element as a sorted subarray.
+ * For each element, it compares the element with the ones before it in the sorted subarray.
+ * It shifts larger elements in the sorted subarray to the right to make space for the current element.
+ * The current element is then inserted into its correct position within the sorted subarray.
+ * This process is repeated for each element until the entire array is sorted.
+ */
+
+public class main { // Defines the main class
+    public static void main(String[] args) {                // Main method, entry point of the program
+        int[] myArray = {64, 34, 25, 12, 22, 11, 90, 5};    // Initialize an array with unsorted elements
+
+        int n = myArray.length;                     // Store the length of the array in variable 'n'
+        
+        // Start from the second element and iterate through the array(starts at 1 because first element (index 0) is considered already sorted in insertion sort.)
+        for (int i = 1; i < n; i++) { 
+            int insertIndex = i;                    // 'insertIndex' will hold the index where the current value should be placed
+            int currentValue = myArray[i];          // Store the value of the current element being considered
+            int j = i - 1;                          // 'j' starts at the index of the last element in the sorted portion of the array
+            
+            // Shift elements of the sorted portion of the array that are greater than 'currentValue' to the right
+            while (j >= 0 && myArray[j] > currentValue) {
+                myArray[j + 1] = myArray[j];        // Move the element one position to the right
+                insertIndex = j;                    // Update 'insertIndex' to where the current value should be inserted
+                j--;                                // Decrement 'j' to continue checking the previous elements
+            }
+            
+            // Insert the 'currentValue' into its correct position in the sorted portion of the array
+            myArray[insertIndex] = currentValue;
+        }
+
+        // Print the sorted array
+        System.out.print("Sorted array: ");
+        for (int value : myArray) {                 // Iterate through the sorted array
+            System.out.print(value + " ");          // Print each element followed by a space
+        }
+    }
+}
+
+/*
+    Step-by-Step Sorting Process:
+    Iteration 1 (i = 1):
+
+    Current Value: 34
+    Compare 34 with 64. Since 64 > 34, shift 64 to the right.
+    Array After Shifting: [64, 64, 25, 12, 22, 11, 90, 5]
+    Insert 34 at the beginning.
+    Array After Insertion: [34, 64, 25, 12, 22, 11, 90, 5]
+    Iteration 2 (i = 2):
+
+    Current Value: 25
+    Compare 25 with 64. Since 64 > 25, shift 64 to the right.
+    Array After Shifting: [34, 64, 64, 12, 22, 11, 90, 5]
+    Compare 25 with 34. Since 34 > 25, shift 34 to the right.
+    Array After Shifting: [34, 34, 64, 12, 22, 11, 90, 5]
+    Insert 25 at the beginning.
+    Array After Insertion: [25, 34, 64, 12, 22, 11, 90, 5]
+ */
