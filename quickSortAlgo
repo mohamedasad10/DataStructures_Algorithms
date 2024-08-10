@@ -1,0 +1,160 @@
+/* QUICK SORT ALGORITHM
+ * ATTENTION: CODE TAKEN FROM: https://www.w3schools.com/dsa/dsa_algo_quicksort.php
+ * 
+ */
+
+public class main{ // Define the Main class
+    public static void main(String[] args) { // Entry point of the program
+        // Initialize an array with unsorted integers
+        int[] myArray = {11,9,12,7,3};
+
+        // Call the quicksort method to sort the array
+        quicksort(myArray, 0, myArray.length - 1);
+
+        // Print the sorted array to the console
+        System.out.print("Sorted array: ");
+        for (int value : myArray) { // Iterate through each element of the array
+            System.out.print(value + " "); // Print each element followed by a space
+        }
+    }
+
+    // Quicksort method to recursively sort the array
+    public static void quicksort(int[] array, int low, int high) {
+        // Base condition: only proceed if low index is less than high index
+        if (low < high) {
+            // Partition the array and get the index of the pivot
+            int pivotIndex = partition(array, low, high);
+
+            // Recursively sort the elements before the pivot
+            quicksort(array, low, pivotIndex - 1);
+
+            // Recursively sort the elements after the pivot
+            quicksort(array, pivotIndex + 1, high);
+        }
+    }
+
+    // Partition method to rearrange elements around the pivot
+    public static int partition(int[] array, int low, int high) {
+        // Choose the pivot element (last element in the subarray)
+        int pivot = array[high];
+
+        // Initialize i to be one less than the starting index
+        int i = low - 1;
+
+        // Loop through the subarray to rearrange elements
+        for (int j = low; j < high; j++) {
+            // If the current element is less than or equal to the pivot
+            if (array[j] <= pivot) {
+                i++; // Increment i to move the boundary of smaller elements
+
+                // Swap the elements at i and j
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+
+        // Swap the pivot element with the element at i+1 position
+        int temp = array[i + 1];
+        array[i + 1] = array[high];
+        array[high] = temp;
+
+        // Return the index of the pivot after partitioning
+        return i + 1;
+    }
+}
+/*
+ * Execution Steps:
+ * Initial Array:
+
+    {11, 9, 12, 7, 3}
+    Step 1: Initial Call to quicksort
+    The quicksort function is called with the array and the indices low = 0 and high = 4 (the full array).
+    quicksort(array, 0, 4);
+    
+    Step 2: First Call to partition
+    The partition function is called with low = 0 and high = 4.
+
+    partition(array, 0, 4);
+    Pivot: The pivot is chosen as the last element, which is 3.
+    Initial state: i = -1
+    Iteration 1 (Partition Loop):
+    j = 0: Compare array[0] = 11 with the pivot 3.
+    11 is greater than 3, so no swapping occurs.
+    i remains -1.
+    Iteration 2 (Partition Loop):
+    j = 1: Compare array[1] = 9 with the pivot 3.
+    9 is greater than 3, so no swapping occurs.
+    i remains -1.
+    Iteration 3 (Partition Loop):
+    j = 2: Compare array[2] = 12 with the pivot 3.
+    12 is greater than 3, so no swapping occurs.
+    i remains -1.
+    Iteration 4 (Partition Loop):
+    j = 3: Compare array[3] = 7 with the pivot 3.
+    7 is greater than 3, so no swapping occurs.
+    i remains -1.
+    End of Partition Loop:
+    Final Swap: The pivot 3 is swapped with array[i+1] (which is array[0]).
+    Array after swap: {3, 9, 12, 7, 11}
+    The partition function returns 0, the index of the pivot.
+    Step 3: Recursive Calls to quicksort
+    The quicksort function is called recursively on the subarrays to the left and right of the pivot.
+
+    quicksort(array, 0, -1); // Left subarray, but low > high, so it returns immediately.
+    quicksort(array, 1, 4); // Right subarray
+    Step 4: Second Call to partition (Right Subarray)
+    The partition function is called on the subarray {9, 12, 7, 11}.
+
+    partition(array, 1, 4);
+    Pivot: The pivot is chosen as 11.
+    Initial state: i = 0
+    Iteration 1 (Partition Loop):
+    j = 1: Compare array[1] = 9 with the pivot 11.
+    9 is less than or equal to 11, so i is incremented to 1, and array[1] is swapped with itself (no change).
+    Iteration 2 (Partition Loop):
+    j = 2: Compare array[2] = 12 with the pivot 11.
+    12 is greater than 11, so no swapping occurs.
+    i remains 1.
+    Iteration 3 (Partition Loop):
+    j = 3: Compare array[3] = 7 with the pivot 11.
+    7 is less than or equal to 11, so i is incremented to 2, and array[3] is swapped with array[2].
+    Array after swap: {3, 9, 7, 12, 11}
+    End of Partition Loop:
+    Final Swap: The pivot 11 is swapped with array[i+1] (which is array[3]).
+    Array after swap: {3, 9, 7, 11, 12}
+    The partition function returns 3, the index of the pivot.
+    Step 5: Recursive Calls to quicksort (Further Subarrays)
+    The quicksort function is called recursively on the subarrays {9, 7} and {12}.
+
+    quicksort(array, 1, 2); // Left subarray
+    quicksort(array, 4, 4); // Right subarray, only one element, so it returns immediately.
+    Step 6: Third Call to partition (Subarray {9, 7})
+    The partition function is called on the subarray {9, 7}.
+
+    partition(array, 1, 2);
+    Pivot: The pivot is chosen as 7.
+    Initial state: i = 0
+    Iteration 1 (Partition Loop):
+    j = 1: Compare array[1] = 9 with the pivot 7.
+    9 is greater than 7, so no swapping occurs.
+    i remains 0.
+    End of Partition Loop:
+    Final Swap: The pivot 7 is swapped with array[i+1] (which is array[1]).
+    Array after swap: {3, 7, 9, 11, 12}
+    The partition function returns 1, the index of the pivot.
+    Step 7: Recursive Calls to quicksort (Final Subarrays)
+    The quicksort function is called on the subarrays {7} and {9} (both single elements, so they return immediately).
+
+    quicksort(array, 1, 0); // Returns immediately
+    quicksort(array, 2, 2); // Returns immediately
+    Final Sorted Array:
+
+    {3, 7, 9, 11, 12}
+    Summary of Iterations and Swaps:
+    Initial array: {11, 9, 12, 7, 3}
+    After first partition: {3, 9, 12, 7, 11} (pivot 3)
+    After second partition: {3, 9, 7, 11, 12} (pivot 11)
+    After third partition: {3, 7, 9, 11, 12} (pivot 7) 
+ * 
+ */
