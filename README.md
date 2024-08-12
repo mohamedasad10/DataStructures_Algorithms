@@ -10,5 +10,7 @@ The primary purpose of this repository is to serve as a study guide and referenc
 Contents:
 
 Data Structures: Implementation of various data structures such as arrays, linked lists, stacks, queues, trees, graphs, and more.
+
 Algorithms: Code for sorting, searching, dynamic programming, greedy algorithms, graph algorithms, etc.
+
 Notes: Detailed notes on theoretical concepts, problem-solving techniques, and best practices in DSA.
