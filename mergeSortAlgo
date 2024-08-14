@@ -1,0 +1,123 @@
+/* MERGE SORT ALGORITHM
+ * ATTENTION : CODE TAKEN FROM: https://www.w3schools.com/dsa/dsa_algo_mergesort.php
+ */
+
+
+import java.util.Arrays;  // Importing the Arrays utility class for array manipulation
+
+public class main {
+    public static void main(String[] args) {
+        // Define an unsorted array of double values
+        double[] unsortedArr = {12, 8, 9, 3, 11, 5, 4};
+        
+        // Call the mergeSort method to sort the array
+        double[] sortedArr = mergeSort(unsortedArr);
+        
+        // Print the sorted array
+        System.out.println("Sorted array: " + Arrays.toString(sortedArr));
+    }
+
+    // Method to perform merge sort on an array
+    public static double[] mergeSort(double[] arr) {
+        // If the array has 1 or fewer elements, it is already sorted, so return it
+        if (arr.length <= 1) {
+            return arr;
+        }
+
+        // Find the middle index to split the array into two halves
+        int mid = arr.length / 2;
+        
+        // Create the left half of the array //The Arrays.copyOfRange() is used to create a new array by copying a specified range of elements from an existing array.
+        double[] leftHalf = Arrays.copyOfRange(arr, 0, mid); 
+        
+        // Create the right half of the array
+        double[] rightHalf = Arrays.copyOfRange(arr, mid, arr.length);
+
+        // Recursively sort the left half
+        double[] sortedLeft = mergeSort(leftHalf);
+        
+        // Recursively sort the right half
+        double[] sortedRight = mergeSort(rightHalf);
+
+        // Merge the two sorted halves into a single sorted array 
+        return merge(sortedLeft, sortedRight);
+    }
+
+
+    // Method to merge two sorted arrays into a single sorted array
+    public static double[] merge(double[] left, double[] right) {
+        // Create an array to hold the merged results
+        double[] result = new double[left.length + right.length];
+        
+        // Initialize indices for left, right, and result arrays
+        int i = 0, j = 0, k = 0;
+
+        // Compare elements from left and right arrays, adding the smaller one to result
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {  // If the element in left is smaller
+                result[k++] = left[i++];  // Add it to result and move to the next element in left
+            } else {  // If the element in right is smaller
+                result[k++] = right[j++];  // Add it to result and move to the next element in right
+            }
+        }
+
+        // Copy any remaining elements from the left array to result
+        while (i < left.length) {
+            result[k++] = left[i++];  // Add remaining elements from left to result
+        }
+
+        // Copy any remaining elements from the right array to result
+        while (j < right.length) {
+            result[k++] = right[j++];  // Add remaining elements from right to result
+        }
+
+        // Return the merged and sorted array
+        return result;
+    }
+}
+
+/*
+ * Detailed Explanation of the merge Method:
+Initial Setup:
+
+left[i] refers to the current element being considered from the left half.
+right[j] refers to the current element being considered from the right half.
+result[k] is the position in the new sorted array where the smaller element (either from left[i] or right[j]) will be placed.
+Sorting and Merging:
+
+The while loop runs as long as there are elements in both the left and right arrays to compare.
+Comparison: The current elements from left and right are compared.
+If left[i] is smaller than right[j], left[i] is placed in result[k], and i and k are incremented.
+If right[j] is smaller, right[j] is placed in result[k], and j and k are incremented.
+Ordering Happens Here: This is where the elements effectively get "swapped" into the correct order.
+Remaining Elements:
+
+After the main loop, if any elements remain in the left array, they are added to result.
+Similarly, any remaining elements in the right array are also added to result.
+Since left and right are already sorted (from the recursive mergeSort calls), any remaining elements can be directly appended to result.
+Example:
+Consider an example array [3, 7, 6, -10]:
+
+Initial Division:
+
+[3, 7] and [6, -10]
+Further divided into [3], [7], [6], [-10]
+
+Merging:
+First, [3] and [7] are merged into [3, 7]:
+Compare 3 and 7; 3 is smaller, so it goes first.
+7 goes next.
+Similarly, [6] and [-10] are merged into [-10, 6]:
+Compare 6 and -10; -10 is smaller, so it goes first.
+6 goes next.
+Finally, [3, 7] and [-10, 6] are merged:
+Compare 3 and -10; -10 is smaller, so it goes first.
+Compare 3 and 6; 3 is smaller, so it goes next.
+Compare 7 and 6; 6 is smaller, so it goes next.
+7 is placed last.
+The final merged array is [-10, 3, 6, 7].
+
+Summary:
+The actual sorting happens during the merging process when the merge method compares elements from the left and right sub-arrays and places them in the correct order in the result array.
+The division step simply prepares the array for this sorting by breaking it down into manageable parts.
+ */
