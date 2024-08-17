@@ -1,4 +1,5 @@
 /* LINEAR SEARCH ALGORITHM
+ * Time Complexity: O(n)
  */
 
 public class main {
