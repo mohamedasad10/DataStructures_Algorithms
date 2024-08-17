@@ -1,0 +1,24 @@
+/* LINEAR SEARCH ALGORITHM
+ */
+
+public class main {
+    public static void main(String[] args) {
+        int[] arr = {12, 8, 9, 11, 5, 11};
+        int currentVal = 11;
+        boolean found = false;
+
+        for(int i=0; i < arr.length;i++){
+            //if value found
+            if(currentVal == arr[i]){
+                System.out.println("Value found: " + arr[i] + " (at index " + i + ")");
+                found = true;
+                break;
+            }
+        }
+        //if value not found
+        if(!found) { 
+            System.out.println("Value " + currentVal + " not found!");
+        }    
+    }
+}
+
