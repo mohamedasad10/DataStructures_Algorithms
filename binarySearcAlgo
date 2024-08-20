@@ -1,0 +1,54 @@
+/* BINARY SEARCH ALGORITHM
+ * Time Complexity: O(log2n)
+ * 
+ * ATTENTION: CODE TAKEN FROM: https://www.w3schools.com/dsa/dsa_algo_binarysearch.php
+ * 
+ * Notes:
+ * Binary Search requires a sorted array to work.
+ * The Binary Search algorithm works by checking the value in the center of the array. If the target value is lower,
+ * the next value to check is in the center of the left half of the array. This way of searching means that the search
+ * area is always half of the previous search area, and this is why the Binary Search algorithm is so fast.
+ */
+
+ public class main { // Define the Main class
+    public static void main(String[] args) {                    // Main method, entry point of the program
+        int[] myArray = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};    // Initialize an integer array with sorted values
+        int myTarget = 15;                                      // Define the target value to search for in the array
+
+        int result = binarySearch(myArray, myTarget);           // Call the binarySearch method and store the result
+
+        // Check if the target value was found
+        if (result != -1) { 
+            System.out.println("Value " + myTarget + " found at index " + result); // Print the index where the value was found
+        } else {
+            System.out.println("Target not found in array."); // Print a message if the value was not found
+        }
+    }
+
+    // Binary search method to find the target value in the array
+    public static int binarySearch(int[] arr, int targetVal) { 
+        int left = 0;                                           // Initialize the left boundary of the search range
+        int right = arr.length - 1;                             // Initialize the right boundary of the search range
+
+        // Loop until the search range is valid
+        while (left <= right) { 
+            int mid = (left + right) / 2;                       // Calculate the middle index of the current search range
+
+            // Check if the middle value matches the target value
+            if (arr[mid] == targetVal) { 
+                return mid;                                     // Return the index if the target value is found
+            }
+
+            // Adjust the search range based on the comparison
+            if (arr[mid] < targetVal) { 
+                left = mid + 1;                                 // Search in the right half if the middle value is less than the target
+            } else {
+                right = mid - 1;                                // Search in the left half if the middle value is greater than the target
+            }
+        }
+
+        return -1;                                              // Return -1 if the target value is not found in the array
+    }
+}
+
+
