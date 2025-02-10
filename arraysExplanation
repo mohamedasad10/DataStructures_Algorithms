@@ -9,28 +9,19 @@ Here's a brief summary of **Arrays** in Java:
 
 - **Declaration:**
     
-    ```java
-    java
-    CopyEdit
     int[] arr;
     
-    ```
-    
+
 - **Initialization:**
     - With values:
         
-        ```java
-        java
-        CopyEdit
         int[] arr = {1, 2, 3, 4};
         
         ```
         
     - With a specified size:
         
-        ```java
-        java
-        CopyEdit
+        
         int[] arr = new int[5];  // Initializes an array of size 5 with default values (0)
         
         ```
@@ -40,9 +31,7 @@ Here's a brief summary of **Arrays** in Java:
 
 - Use index notation (0-based index):
     
-    ```java
-    java
-    CopyEdit
+    
     int x = arr[2];  // Accesses the 3rd element
     
     ```
@@ -52,18 +41,14 @@ Here's a brief summary of **Arrays** in Java:
 
 - **Length of an array:**
     
-    ```java
-    java
-    CopyEdit
+    
     int len = arr.length;
     
     ```
     
 - **Iterating through an array:**
     
-    ```java
-    java
-    CopyEdit
+    
     for (int i = 0; i < arr.length; i++) {
         System.out.println(arr[i]);
     }
@@ -75,27 +60,21 @@ Here's a brief summary of **Arrays** in Java:
 
 - **Arrays.fill()**Fills the array with a specified value:
     
-    ```java
-    java
-    CopyEdit
+    
     Arrays.fill(arr, 5);  // Fills all elements of arr with 5
     
     ```
     
 - **Arrays.sort()**Sorts the array in ascending order:
     
-    ```java
-    java
-    CopyEdit
+  
     Arrays.sort(arr);
     
     ```
     
 - **Arrays.copyOf()**Creates a copy of the array:
     
-    ```java
-    java
-    CopyEdit
+    
     int[] newArr = Arrays.copyOf(arr, arr.length);
     
     ```
@@ -105,9 +84,7 @@ Here's a brief summary of **Arrays** in Java:
 
 - Arrays can be of multiple dimensions, such as 2D arrays:
     
-    ```java
-    java
-    CopyEdit
+    
     int[][] matrix = new int[3][3];  // A 3x3 matrix
     matrix[0][0] = 1;  // Accessing element
     
